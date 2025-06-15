@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Not Found - 404</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      line-height: 1.2;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+      background-color: #1a000f;
+      animation: backgroundFlicker 6s infinite;
+    }
+
+    @keyframes backgroundFlicker {
+
+      0%,
+      100% {
+        background-color: #1a000f;
+      }
+
+      50% {
+        background-color: #2d000f;
+      }
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(150px);
+      opacity: 0.3;
+      animation: spin 20s linear infinite;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 500px;
+      height: 500px;
+      background: crimson;
+      top: -100px;
+      left: -150px;
+    }
+
+    .circle2 {
+      width: 400px;
+      height: 400px;
+      background: #ff003c;
+      bottom: -120px;
+      right: -100px;
+      animation-delay: 4s;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(180deg) scale(1.2);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+      }
+    }
+
+    .glass {
+      background: rgba(255, 0, 76, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 0, 76, 0.3);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 40px rgba(255, 0, 76, 0.1);
+      transform: translateZ(0);
+      will-change: transform;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #ff5f96;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      text-shadow: 0 0 5px red;
+      user-select: none;
+    }
+
+    .code {
+      font-size: 6rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #ff003c, #ff5f96, #ff003c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulseGlow 3s infinite ease-in-out;
+      user-select: none;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 10px #ff003c;
+      }
+
+      50% {
+        text-shadow: 0 0 20px #ff003c;
+      }
+    }
+
+    .skull {
+      font-size: 3rem;
+      animation: float 4s ease-in-out infinite;
+      opacity: 0.6;
+      user-select: none;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .message {
+      font-size: 1.15rem;
+      color: #f8dce3;
+      margin: 1.5rem 0;
+      letter-spacing: 0.5px;
+      user-select: none;
+      line-height: 1.3;
+    }
+
+    .home-link a {
+      color: #ff003c;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+      border: 2px solid #ff003c;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 8px #ff003c;
+      text-shadow: 0 0 4px red;
+      user-select: none;
+      display: inline-block;
+    }
+
+    .home-link a:hover {
+      background: #ff003c;
+      color: black;
+      text-shadow: none;
+      box-shadow: 0 0 25px #ff003c;
+    }
+
+    @media (max-width: 500px) {
+      .glass {
+        padding: 2rem 1.5rem;
+        min-height: 300px;
+      }
+
+      .code {
+        font-size: 4rem;
+      }
+
+      .message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="circle circle1"></div>
+  <div class="circle circle2"></div>
+
+  <div class="glass">
+    <div class="brand">UTrello</div>
+    <div class="skull">💀</div>
+    <div class="code">404</div>
+    <div class="message">This page doesn't exist. Maybe it never did.</div>
+    <div class="home-link"><a href="/">Back to home</a></div>
+  </div>
+</body>
+
+</html>

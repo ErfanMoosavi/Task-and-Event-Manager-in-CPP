@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #141e30;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      overflow-y: auto;
+      position: relative;
+      padding: 2rem;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 400px;
+      height: 400px;
+      background: #ffb347;
+      top: -100px;
+      left: -150px;
+    }
+
+    .circle2 {
+      width: 300px;
+      height: 300px;
+      background: #87f5fb;
+      bottom: -150px;
+      right: -100px;
+    }
+
+    .circle3 {
+      width: 300px;
+      height: 300px;
+      background: #d18fff;
+      top: 60%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+      padding: 2.5rem;
+    }
+
+    .logout-button,
+    .username-button {
+      position: absolute;
+      top: 1rem;
+      padding: 0.45rem 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .logout-button {
+      left: 1rem;
+      background: rgba(255, 100, 100, 0.15);
+      color: #ffb3b3;
+    }
+
+    .logout-button:hover {
+      background: rgba(255, 100, 100, 0.3);
+      color: #ffffff;
+    }
+
+    .username-button {
+      right: 1rem;
+      background: rgba(100, 255, 100, 0.15);
+      color: #b3ffb3;
+    }
+
+    .username-button:hover {
+      background: rgba(100, 255, 100, 0.3);
+      color: #ffffff;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #ffb347, #d18fff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .report-item {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 15px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .type-label {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 20px;
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .type-label.task {
+      background: rgba(255, 100, 150, 0.2);
+      color: #ff709a;
+    }
+
+    .type-label.event {
+      background: rgba(100, 200, 255, 0.2);
+      color: #71cfff;
+    }
+
+    .type-label.periodic_event {
+      background: rgba(150, 100, 255, 0.2);
+      color: #b07aff;
+    }
+
+    .report-item .content {
+      line-height: 1.6;
+      color: #eee;
+    }
+
+    .dashboard-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #d18fff, #87f5fb);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dashboard-btn:hover {
+      background: linear-gradient(to right, #87f5fb, #d18fff);
+      box-shadow: 0 4px 15px rgba(135, 245, 251, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <div class="container">
+    <button class="logout-button" onclick="location.href='/logout'">Logout</button>
+    <button class="username-button"><% cout << context["username"]; %></button>
+
+    <h2>Report Results</h2>
+
+    <% cout << context["report"]; %>
+
+    <button class="dashboard-btn" onclick="location.href='/dashboard'">Go to Dashboard</button>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #1f1c2c;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .background-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .circle1 {
+            width: 400px;
+            height: 400px;
+            background: #ff6bcb;
+            top: 100px;
+            left: -120px;
+        }
+
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            background: #6bffcb;
+            top: -120px;
+            right: -100px;
+        }
+
+        .circle3 {
+            width: 250px;
+            height: 250px;
+            background: #6b6bff;
+            bottom: -80px;
+            left: 80px;
+        }
+
+        .glass-container {
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            width: 95%;
+            max-width: 700px;
+            padding: 1.5rem 2rem 2rem;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-glass {
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+        }
+
+        .logout-button,
+        .username-button {
+            position: absolute;
+            top: 1rem;
+            padding: 0.45rem 1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .logout-button {
+            left: 1rem;
+            background: rgba(255, 100, 100, 0.15);
+            color: #ffb3b3;
+        }
+
+        .logout-button:hover {
+            background: rgba(255, 100, 100, 0.3);
+            color: #ffffff;
+        }
+
+        .username-button {
+            right: 1rem;
+            background: rgba(100, 255, 100, 0.15);
+            color: #b3ffb3;
+        }
+
+        .username-button:hover {
+            background: rgba(100, 255, 100, 0.3);
+            color: #ffffff;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #e0e0e0;
+            margin-bottom: 0.4rem;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #6bffcb, #6b6bff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-bar {
+            width: 110px;
+            height: 5px;
+            background: linear-gradient(to right, #6bffcb, #6b6bff);
+            margin: 0 auto 0.7rem;
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            color: #ddd;
+            opacity: 0.9;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .glass-button {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .glass-button {
+                width: 80%;
+            }
+
+            .glass-container {
+                padding: 1.3rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .section h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-circle circle1"></div>
+    <div class="background-circle circle2"></div>
+    <div class="background-circle circle3"></div>
+
+    <div class="glass-container">
+        <button class="logout-button" onclick="location.href='/logout'">Logout</button>
+        <button class="username-button">
+            <% cout << context["username"]; %>
+        </button>
+        <div class="brand">UTrello</div>
+        <h2>Dashboard</h2>
+
+        <div class="section-glass">
+            <div class="section">
+                <div class="section-bar"></div>
+                <h3>Task Management</h3>
+                <div class="button-group">
+                    <a class="glass-button" href="add_task">Add Task</a>
+                    <a class="glass-button" href="edit_task">Edit Task</a>
+                    <a class="glass-button" href="delete_task">Delete Task</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-glass">
+            <div class="section">
+                <div class="section-bar"></div>
+                <h3>Event Management</h3>
+                <div class="button-group">
+                    <a class="glass-button" href="add_event">Add Event</a>
+                    <a class="glass-button" href="add_weekly_event">Add Weekly Event</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-glass">
+            <div class="section">
+                <div class="section-bar"></div>
+                <h3>Reporting</h3>
+                <div class="button-group">
+                    <a class="glass-button" href="/generate_report">Report</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

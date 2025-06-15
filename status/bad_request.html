@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bad Request</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #2c1a1a;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .circle1 {
+            width: 400px;
+            height: 400px;
+            background: #ff4d4d;
+            top: 50px;
+            right: -150px;
+        }
+
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            background: #ff2b2b;
+            top: -100px;
+            left: 60px;
+        }
+
+        .circle3 {
+            width: 250px;
+            height: 250px;
+            background: #d10000;
+            bottom: -80px;
+            right: 90px;
+        }
+
+        .glass-container {
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+            padding: 3rem 2.5rem;
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
+
+        .brand {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #ffcccc;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ff9999, #ff4d4d, #ff1a1a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #ffe5e5;
+            margin-bottom: 1.5rem;
+        }
+
+        .home-link {
+            font-size: 1.1rem;
+            color: #f7c1c1;
+        }
+
+        .home-link a {
+            background: linear-gradient(90deg, #ff9999, #ff4d4d, #ff1a1a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+            text-decoration: none;
+            filter: drop-shadow(0 0 2px rgba(255, 77, 77, 0.7));
+            transition: filter 0.3s ease;
+        }
+
+        .home-link a:hover {
+            filter: drop-shadow(0 0 5px rgba(255, 26, 26, 0.9));
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .glass-container {
+                padding: 2rem 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-circle circle1"></div>
+    <div class="background-circle circle2"></div>
+    <div class="background-circle circle3"></div>
+
+    <div class="glass-container">
+        <div class="brand">UTrello</div>
+        <h2>Bad Request</h2>
+        <p>The request could not be understood by the server.</p>
+        <p class="home-link">Want to try again? <a href="/">Back to home</a></p>
+    </div>
+</body>
+
+</html>

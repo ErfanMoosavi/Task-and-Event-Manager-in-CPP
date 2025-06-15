@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holiday Found</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #1f1f2e;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 400px;
+      height: 400px;
+      background: #6bffd1;
+      top: 60px;
+      right: -120px;
+    }
+
+    .circle2 {
+      width: 300px;
+      height: 300px;
+      background: #71e8ff;
+      top: -80px;
+      left: 80px;
+    }
+
+    .circle3 {
+      width: 250px;
+      height: 250px;
+      background: #42f5b9;
+      bottom: -100px;
+      right: 50px;
+    }
+
+    .glass-container {
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      width: 90%;
+      max-width: 450px;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #d0fff1;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+      opacity: 0.85;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #caffd0, #6bffd1, #42f5b9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #e0fff8;
+      margin-bottom: 1.5rem;
+    }
+
+    .dashboard_link {
+      font-size: 1.1rem;
+      color: #d0fff1;
+    }
+
+    .dashboard_link a {
+      background: linear-gradient(90deg, #caffd0, #6bffd1, #42f5b9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+      text-decoration: none;
+      filter: drop-shadow(0 0 2px rgba(107, 255, 209, 0.7));
+      transition: filter 0.3s ease;
+    }
+
+    .dashboard_link a:hover {
+      filter: drop-shadow(0 0 5px rgba(66, 245, 185, 0.9));
+      text-decoration: underline;
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #ffffff;
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: twinkle 4s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkle {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.1;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0.5;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .glass-container {
+        padding: 2rem 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <div class="sparkle" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+  <div class="sparkle" style="top: 30%; left: 70%; animation-delay: 1s;"></div>
+  <div class="sparkle" style="top: 60%; left: 40%; animation-delay: 2s;"></div>
+  <div class="sparkle" style="top: 80%; left: 10%; animation-delay: 1.5s;"></div>
+  <div class="sparkle" style="top: 25%; left: 50%; animation-delay: 0.5s;"></div>
+  <div class="sparkle" style="top: 75%; left: 85%; animation-delay: 2.5s;"></div>
+
+  <div class="glass-container">
+    <div class="brand">UTrello</div>
+    <h2>Holiday Found 🎉</h2>
+    <p class="dashboard_link">Have fun! <a href="/dashboard">back to dashboard</a></p>
+  </div>
+</body>
+
+</html>

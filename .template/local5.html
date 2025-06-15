@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Weekly Event</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: #1f1c2c;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 300px;
+      height: 300px;
+      background: #6bffb3;
+      top: 20%;
+      left: -100px;
+    }
+
+    .circle2 {
+      width: 250px;
+      height: 250px;
+      background: #ffdf6b;
+      bottom: 0;
+      right: -80px;
+    }
+
+    .circle3 {
+      width: 200px;
+      height: 200px;
+      background: #6bbfff;
+      top: 10%;
+      right: 10%;
+    }
+
+    .glass-container {
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+      padding: 1.6rem 2.2rem;
+      text-align: center;
+      width: 95%;
+      max-width: 540px;
+      position: relative;
+    }
+
+    .logout-button,
+    .username-button {
+      position: absolute;
+      top: 0.8rem;
+      padding: 0.3rem 0.8rem;
+      font-weight: 500;
+      font-size: 0.8rem;
+      border: none;
+      border-radius: 14px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .logout-button {
+      left: 1rem;
+      background: rgba(255, 100, 100, 0.15);
+      color: #ffb3b3;
+    }
+
+    .logout-button:hover {
+      background: rgba(255, 100, 100, 0.3);
+      color: #ffffff;
+    }
+
+    .username-button {
+      right: 1rem;
+      background: rgba(100, 255, 100, 0.15);
+      color: #b3ffb3;
+    }
+
+    .username-button:hover {
+      background: rgba(100, 255, 100, 0.3);
+      color: #ffffff;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #dddddd;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.8px;
+    }
+
+    .glass-container h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, #ffa26b, #6bd8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea {
+      padding: 0.6rem 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      width: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #ccc;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-group label {
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+
+    input[type="submit"] {
+      padding: 0.6rem 0.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(90deg, #ffa26b, #6bd8ff);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 0.3rem;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #6bd8ff, #ffa26b);
+      box-shadow: 0 3px 12px rgba(107, 216, 255, 0.4);
+    }
+
+    .dashboard-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #6bd8ff;
+    }
+
+    .dashboard-link a {
+      color: #6bd8ff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .dashboard-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 500px) {
+      .glass-container {
+        padding: 1.6rem 1.2rem;
+      }
+
+      .glass-container h2 {
+        font-size: 1.6rem;
+      }
+
+      input[type="submit"] {
+        font-size: 0.95rem;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <div class="glass-container">
+    <button class="logout-button" onclick="location.href='/logout'">Logout</button>
+    <button class="username-button">
+      <% cout << context["username"]; %>
+    </button>
+
+    <div class="brand">UTrello</div>
+    <h2>Add Weekly Event</h2>
+
+    <form action="/add_weekly_event" method="post">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="start-date">Start Date</label>
+          <input name="start-date" type="text" placeholder="YYYY/MM/DD" required />
+        </div>
+        <div class="form-group">
+          <label for="end-date">End Date</label>
+          <input name="end-date" type="text" placeholder="YYYY/MM/DD" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="start-time">Start Time (24h)</label>
+          <input name="start-time" type="number" min="0" max="23" placeholder="0-23" required />
+        </div>
+        <div class="form-group">
+          <label for="duration">Duration (hours)</label>
+          <input name="duration" type="number" min="1" max="24" step="1" placeholder="1-24" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="days">Days of Week</label>
+        <input name="days" type="text" placeholder="e.g. Monday,Wednesday,Friday" required />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input name="title" type="text" placeholder="Event title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description (optional)</label>
+        <textarea name="description" placeholder="Event description..."></textarea>
+      </div>
+
+      <input type="submit" value="Add Weekly Event" />
+    </form>
+
+    <p class="dashboard-link"><a href="/dashboard">← Back to Dashboard</a></p>
+  </div>
+</body>
+
+</html>

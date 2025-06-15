@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Logout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: #2c1c1c;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .c1 {
+            width: 400px;
+            height: 400px;
+            background: #ff7373;
+            top: 30px;
+            left: -100px;
+        }
+
+        .c2 {
+            width: 300px;
+            height: 300px;
+            background: #ff5555;
+            top: -100px;
+            right: 60px;
+        }
+
+        .c3 {
+            width: 250px;
+            height: 250px;
+            background: #ff3b3b;
+            bottom: -80px;
+            left: 90px;
+        }
+
+        .container {
+            z-index: 1;
+            background: rgba(255, 100, 100, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 100, 100, 0.2);
+            padding: 3rem 2rem;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffb6b6, #ff5b5b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.2rem;
+        }
+
+        p {
+            color: #ffd7d7;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        input[type="text"] {
+            padding: 0.7rem 1rem;
+            border-radius: 30px;
+            border: 2px solid #ff7a7a;
+            background: transparent;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            width: 80%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff3b3b;
+            background-color: rgba(255, 91, 91, 0.1);
+        }
+
+        button {
+            background: linear-gradient(90deg, #ff7a7a, #ff4949);
+            color: white;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #ff8c8c, #ff5b5b);
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+    <div class="circle c3"></div>
+
+    <div class="container">
+        <h2>Logout?</h2>
+        <p>If you want to log out, type <strong>Yes</strong>. If not, type <strong>No</strong>.</p>
+        <form action="/logout" method="POST">
+            <input type="text" name="confirmation" placeholder="Type your answer..." required />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

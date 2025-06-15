@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1f1c2c;
+      color: #ffffff;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .background-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .circle1 {
+      width: 350px;
+      height: 350px;
+      background: #ff89a3;
+      top: -100px;
+      left: -100px;
+    }
+
+    .circle2 {
+      width: 280px;
+      height: 280px;
+      background: #94ffe1;
+      bottom: -60px;
+      right: -60px;
+    }
+
+    .circle3 {
+      width: 220px;
+      height: 220px;
+      background: #8ab6ff;
+      top: 80px;
+      right: 80px;
+    }
+
+    .glass-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 30px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+      padding: 2.5rem 2rem;
+      width: 90%;
+      max-width: 720px;
+      max-height: 90vh;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      color: #eeeeee;
+      margin-bottom: 0.8rem;
+      opacity: 0.9;
+    }
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .description {
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 2rem;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+.gradient-button {
+  padding: 0.8rem 5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+  background-clip: border-box;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.gradient-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 1px 3px #fad0c4;
+}
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+      padding: 1.3rem;
+      min-width: 180px;
+      flex: 1 1 200px;
+      max-width: 220px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      background: linear-gradient(90deg, #ffb6f9, #a18cd1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    .feature p {
+      font-size: 0.9rem;
+      color: #dddddd;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 500px) {
+      .glass-container {
+        padding: 1.5rem 1rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+
+      .gradient-button {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.2rem;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-circle circle1"></div>
+  <div class="background-circle circle2"></div>
+  <div class="background-circle circle3"></div>
+
+  <div class="glass-container">
+    <div class="brand">UTrello</div>
+    <h2>Welcome to UTrello</h2>
+    <p class="description">Smart and minimal task and event management.</p>
+
+    <div class="button-group">
+      <button class="gradient-button" onclick="location.href='/login'">Login</button>
+      <button class="gradient-button" onclick="location.href='/signup'">Signup</button>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <h4>🎯 Task & Event</h4>
+        <p>Create, update, and organize your tasks with ease.</p>
+      </div>
+      <div class="feature">
+        <h4>📊 Reports</h4>
+        <p>Track your progress and get smart productivity insights.</p>
+      </div>
+      <div class="feature">
+        <h4>🌈 Clean Design</h4>
+        <p>Enjoy a visually stunning interface built for focus and flow.</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
