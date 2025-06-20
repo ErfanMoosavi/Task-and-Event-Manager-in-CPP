@@ -164,12 +164,10 @@
 </head>
 
 <body>
-  <!-- Background blobs -->
   <div class="background-circle circle1"></div>
   <div class="background-circle circle2"></div>
   <div class="background-circle circle3"></div>
 
-  <!-- Login box -->
   <div class="glass-container">
     <div class="brand">UTrello</div>
     <h2>Login</h2>
@@ -180,6 +178,49 @@
     </form>
     <p class="signup-link">Don’t have an account? <a href="/signup">Sign up</a></p>
   </div>
+  <script>
+    const title = document.querySelector('.glass-container h2');
+    const titleText = "Login";
+    let idx = 0;
+    title.textContent = '';
+
+    function typeTitle() {
+      if (idx < titleText.length) {
+        title.textContent += titleText.charAt(idx);
+        idx++;
+        setTimeout(typeTitle, 150);
+      }
+    }
+    typeTitle();
+
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioCtx();
+
+    function playHoverSound() {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(650, audioCtx.currentTime);
+      gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      oscillator.start();
+      oscillator.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.15);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+      oscillator.stop(audioCtx.currentTime + 0.15);
+    }
+
+    const hoverElements = document.querySelectorAll('.logout-button, .username-button, .glass-button, input[type="submit"]');
+    hoverElements.forEach(elem => {
+      elem.addEventListener('mouseenter', () => {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        playHoverSound();
+      });
+    });
+  </script>
 </body>
 
 </html>

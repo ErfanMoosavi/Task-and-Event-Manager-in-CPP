@@ -258,11 +258,10 @@ string System::getReportHTML(const string &username) const
     .username-button:hover {
       background: rgba(100, 255, 100, 0.3); color: #ffffff;
     }
-
     .report-section-bar {
-      width: 140px; /* افزایش عرض */
+      width: 140px;
       height: 5px;
-      margin: 0.3rem auto 0.4rem; /* کاهش فاصله بالا و پایین */
+      margin: 0.3rem auto 0.4rem;
       border-radius: 2px;
       background: linear-gradient(to right, #ffb347, #d18fff);
     }
@@ -285,67 +284,67 @@ string System::getReportHTML(const string &username) const
     }
     .type-label.task { background: rgba(255, 100, 150, 0.2); color: #ff709a; }
     .type-label.event { background: rgba(100, 200, 255, 0.2); color: #71cfff; }
-    .type-label.periodic_event { background: rgba(150, 100, 255, 0.2); color: #b07aff; }
+    .type-label.weekly_event { background: rgba(150, 100, 255, 0.2); color: #b07aff; }
 
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
 
-.detail-card {
-  flex: 1 1 calc(25% - 1rem);
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .detail-card {
+      flex: 1 1 calc(25% - 1rem);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.detail-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15), 0 6px 20px rgba(0, 0, 0, 0.1);
-}
+    .detail-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15), 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
 
-.detail-card .label {
-  font-size: 0.88rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  color:rgb(255, 255, 255);
-  padding: 0.3rem 0.7rem;
-  border-radius: 12px;
-  display: inline-block;
-  width: fit-content;
-  margin-bottom: 0.3rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+    .detail-card .label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: rgb(255, 255, 255);
+      padding: 0.3rem 0.7rem;
+      border-radius: 12px;
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 0.3rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
 
-.detail-card .value {
-  font-size: 1.1rem;      
-  font-weight: 700;       
-  color: rgb(255, 255, 255); 
-}
+    .detail-card .value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgb(255, 255, 255);
+    }
 
-.dashboard-btn {
-  display: block; margin: 2rem auto 0; padding: 0.9rem 2rem;
-  border: none; border-radius: 30px; font-size: 1.1rem;
-  font-weight: 600; background: linear-gradient(to right, #ffb347, #d18fff);
-  color: white; cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-.dashboard-btn:hover {
-  background: linear-gradient(to right, #ffb347, #d18fff);
-  box-shadow: 0 4px 15px rgba(135, 245, 251, 0.4);
-}
+    .dashboard-btn {
+      display: block; margin: 2rem auto 0; padding: 0.9rem 2rem;
+      border: none; border-radius: 30px; font-size: 1.1rem;
+      font-weight: 600; background: linear-gradient(to right, #ffb347, #d18fff);
+      color: white; cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .dashboard-btn:hover {
+      background: linear-gradient(to right, #ffb347, #d18fff);
+      box-shadow: 0 4px 15px rgba(135, 245, 251, 0.4);
+    }
 
-@media (max-width: 700px) {
-  .details-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 400px) {
-  .details-grid { grid-template-columns: 1fr; }
-}
+    @media (max-width: 700px) {
+      .details-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 400px) {
+      .details-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -356,7 +355,7 @@ string System::getReportHTML(const string &username) const
 )";
 
     html += "<button class='logout-button' onclick=\"location.href='/logout'\">Logout</button>";
-    html += "<button class='username-button'>" + username + "</button>";
+    html += "<button class='username-button'>" + username + "<span id='clock' style='margin-left: 0.5rem; font-weight: 600;'></span></button>";
     html += "<h2>Report Results</h2>";
 
     for (const auto &item : report_items)
@@ -378,7 +377,49 @@ string System::getReportHTML(const string &username) const
     }
 
     html += "<button class='dashboard-btn' onclick=\"location.href='/dashboard'\">Go to Dashboard</button>";
-    html += "</div></body></html>";
+    html += R"(</div>
+
+<script>
+  const clock = document.getElementById("clock");
+  function updateClock() {
+    const now = new Date();
+    clock.textContent = now.toLocaleTimeString();
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  const AudioCtx = window.AudioContext || window.webkitAudioContext;
+  const audioCtx = new AudioCtx();
+
+  function playHoverSound() {
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(650, audioCtx.currentTime);
+    gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    oscillator.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.15);
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+    oscillator.stop(audioCtx.currentTime + 0.15);
+  }
+
+  const hoverElements = document.querySelectorAll('.logout-button, .username-button, .dashboard-btn');
+  hoverElements.forEach(elem => {
+    elem.addEventListener('mouseenter', () => {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      playHoverSound();
+    });
+  });
+</script>
+
+</body>
+</html>
+)";
 
     return html;
 }

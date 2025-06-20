@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,8 +11,7 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       height: 100%;
       width: 100%;
       overflow: hidden;
@@ -27,6 +25,12 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .background-circle {
@@ -35,6 +39,12 @@
       filter: blur(100px);
       opacity: 0.5;
       z-index: 0;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px) translateX(0px); }
+      100% { transform: translateY(-20px) translateX(20px); }
     }
 
     .circle1 {
@@ -43,6 +53,7 @@
       background: #ff89a3;
       top: -100px;
       left: -100px;
+      animation-delay: 0s;
     }
 
     .circle2 {
@@ -51,6 +62,7 @@
       background: #94ffe1;
       bottom: -60px;
       right: -60px;
+      animation-delay: 1s;
     }
 
     .circle3 {
@@ -59,6 +71,7 @@
       background: #8ab6ff;
       top: 80px;
       right: 80px;
+      animation-delay: 2s;
     }
 
     .glass-container {
@@ -66,8 +79,8 @@
       z-index: 1;
       background: rgba(255, 255, 255, 0.08);
       border-radius: 30px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
       padding: 2.5rem 2rem;
@@ -76,6 +89,12 @@
       max-height: 90vh;
       overflow-y: auto;
       text-align: center;
+      animation: popIn 1s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.9); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .brand {
@@ -96,12 +115,22 @@
       background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: none;
+      width: auto;
+      opacity: 0;
+      transform: translateX(-50%);
+      position: relative;
+      left: 50%;
+      transition: opacity 0.5s ease, left 2s ease;
     }
 
     .description {
       font-size: 1.15rem;
       color: #ffffff;
       margin-bottom: 2rem;
+      animation: fadeIn 2s ease 1.5s forwards;
     }
 
     .button-group {
@@ -112,23 +141,41 @@
       flex-wrap: wrap;
     }
 
-.gradient-button {
-  padding: 0.8rem 5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  border-radius: 50px;
-  border: none;
-  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-  background-clip: border-box;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
+    .gradient-button {
+      padding: 0.8rem 5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+      color: rgb(255, 255, 255);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.4s ease, background 0.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-.gradient-button:hover {
-  transform: scale(1.03);
-  box-shadow: 0 1px 3px #fad0c4;
-}
+    .gradient-button::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 60%);
+      animation: pulse 2s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.8; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+
+    .gradient-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #fad0c4;
+    }
 
     .features {
       display: flex;
@@ -148,11 +195,18 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatUp 2s ease forwards;
     }
 
     .feature:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .feature h4 {
@@ -205,7 +259,7 @@
 
   <div class="glass-container">
     <div class="brand">UTrello</div>
-    <h2>Welcome to UTrello</h2>
+    <h2 id="type-title"></h2>
     <p class="description">Smart and minimal task and event management.</p>
 
     <div class="button-group">
@@ -228,6 +282,71 @@
       </div>
     </div>
   </div>
-</body>
 
+  <script>
+    const title = document.getElementById('type-title');
+    const text = "Welcome to UTrello";
+
+    let index = 0;
+
+    function typeNextChar() {
+      if (index < text.length) {
+        title.textContent += text[index];
+        index++;
+        setTimeout(typeNextChar, 120);
+      } else {
+        setTimeout(() => {
+          title.style.opacity = "1";
+          title.style.left = "50%";
+        }, 300);
+
+        setTimeout(() => {
+          title.style.transform = "translateX(-50%)";
+        }, 600);
+      }
+    }
+
+    title.style.opacity = "1";
+    title.style.left = "20%";
+
+    typeNextChar();
+
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioCtx();
+
+    function playHoverSound() {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+      gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      oscillator.start();
+      oscillator.frequency.exponentialRampToValueAtTime(900, audioCtx.currentTime + 0.15);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+      oscillator.stop(audioCtx.currentTime + 0.15);
+    }
+
+    document.querySelectorAll('.gradient-button').forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        playHoverSound();
+      });
+    });
+
+    const circles = document.querySelectorAll('.background-circle');
+    document.addEventListener('mousemove', (e) => {
+      let mouseX = e.clientX / window.innerWidth;
+      let mouseY = e.clientY / window.innerHeight;
+      circles.forEach((circle, index) => {
+        const movement = (index + 1) * 30;
+        circle.style.transform = `translate(${mouseX * movement}px, ${mouseY * movement}px)`;
+      });
+    });
+  </script>
+</body>
 </html>

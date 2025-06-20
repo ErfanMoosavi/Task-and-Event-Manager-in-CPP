@@ -223,10 +223,11 @@
     <div class="glass-container">
         <button class="logout-button" onclick="location.href='/logout'">Logout</button>
         <button class="username-button">
-            <% cout << context["username"]; %>
+            <% cout << context["username"]; %> <span id="clock"
+                    style="margin-left: 0.5rem; font-weight: 600;"></span>
         </button>
         <div class="brand">UTrello</div>
-        <h2>Dashboard</h2>
+        <h2 id="typing-title"></h2>
 
         <div class="section-glass">
             <div class="section">
@@ -261,6 +262,58 @@
             </div>
         </div>
     </div>
+    <script>
+
+        const title = document.getElementById("typing-title");
+        const text = "Dashboard";
+        let i = 0;
+
+        function type() {
+            if (i < text.length) {
+                title.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, 120);
+            }
+        }
+        type();
+
+        const clock = document.getElementById("clock");
+        function updateClock() {
+            const now = new Date();
+            clock.textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioCtx();
+
+        function playHoverSound() {
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(650, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.12, audioCtx.currentTime);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            oscillator.start();
+            oscillator.frequency.exponentialRampToValueAtTime(850, audioCtx.currentTime + 0.15);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.15);
+            oscillator.stop(audioCtx.currentTime + 0.15);
+        }
+
+        const hoverElements = document.querySelectorAll('.logout-button, .username-button, .glass-button');
+        hoverElements.forEach(elem => {
+            elem.addEventListener('mouseenter', () => {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                playHoverSound();
+            });
+        });
+    </script>
+
 </body>
 
 </html>
